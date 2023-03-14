@@ -1,0 +1,9 @@
+trigger acctrigg on account (after insert){
+list<contact> cl = new list<contact>();
+  for(account a : trigger.new){
+    contact c = new contact();
+    c.lastname = a.name + ' con';
+    c.accountid = a.id;
+    cl.add(c);
+  }insert cl;
+}
